@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全屏滚动</title>
+    <link rel="stylesheet" href="../lib/css/base.css">
+    <link rel="stylesheet" href="../lib/css/mypage.css">
+    <link rel="stylesheet" href="../lib/css/jquery.fullPage_9525770.css">
+    <script src="../lib/js/jquery.min_78bc357.js"></script>
+    <script src="../lib/js/jquery.fullPage.min_688fc6d.js"></script>
+    <script src="../lib/js/jquery.easings.min_80a8980.js"></script>
+</head>
+<body>
+    <div class="nav">
+
+    </div>
+    <div id="fullpage">
+        <div class="section section1">
+            <div class="box1 updown">one</div>
+            <div class="box2">tow</div>
+            <div class="box3">san</div>
+            <div class="box4">si</div>
+            <div class="box5">wu</div>
+            <div class="box6">liu</div>
+        </div>
+        <div class="section section2">
+            <div class="box21">
+                <div class="box22">
+                    <div class="box23"></div>
+                </div>
+                <div class="box24"></div>
+            </div>
+        </div>
+        <div class="section section3">
+            第三屏
+        </div>
+        <div class="section section4">第四屏</div>
+        <div class="section section5">第五屏</div>
+        <div class="section section6">第六屏</div>
+    </div>
+    <script>
+        $(function(){
+            $('#fullpage').fullpage({
+                navigation:true,
+                loopBottom:true,
+                scrollingSpeed:800,
+                afterLoad:function(anchorLink,index){
+                    if(index == 2){
+                        $('.box22').show().animate({'right':370},1000,function(){
+                            $('.box23').animate({'opacity':1},500,function(){
+                                $('.box22').animate({'right':200,'top':20,'width':80,'height':20},1000);
+                                $('.box24').show().animate({'width':500,'height':300},1000);
+                            })
+                        });
+                    }
+                }
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历管理系统</title>
+    <style>
+      img{
+        width: 200px;
+      }
+    </style>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+      
+      <div class="container-fluid">
+       <div style="width: 100%;height: 40px;"></div>
+        <div class="row">
+         
+          <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+              <h1>个人信息</h1>
+              
+            <form role="form" action="/textnew" method="POST" enctype="multipart/form-data" >
+                <div class="row">
+                <div class="form-group col-md-6">
+                 <label for="name">姓名：</label>
+                 <input type="text" class="form-control" id="name" name="name"  placeholder="请输入名称">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">邮箱：</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="请输入邮箱">
+                   </div>
+                </div>
+               
+               
+                <div class="form-group"> 
+                <label for="inputfile">添加图片</label>
+                <input type="file" name="myFile"  >
+                <input type="file" name="myFile" >
+                <input type="file" name="myFile" >
+                <img src="" class="img-rounded">
+                </div>
+                <button type="button" class="btn btn-danger">重置</button>
+                <button type="submit" class="btn btn-success">保存</button>
+            </form>
+    
+          </main>
+        </div>
+      </div>
+      <script>
+        var file = document.querySelectorAll("input[type='file']")
+        var body = document.querySelector('body')
+        for(var i=0;i<file.length;i++){
+          file[i].onchange = function(){
+            var file= this.files;
+        console.log(file)
+      
+        
+            var reader=new FileReader();
+            reader.readAsDataURL(file[0]);
+            reader.onload =function(){
+            /*展示*/
+            var img = document.createElement('img')
+            img.src = reader.result
+            body.appendChild(img)
+          }
+    
+       
+            
+        }
+      }
+      
+      //  function getFileContent(){
+      //   /*创建文件读取对象*/
+      //   var body = document.querySelector('body')
+      //   // var reader=new FileReader();
+  
+      //   /*文件存储在file表单元素的files属性中，它是一个数组*/
+      //   var file= this.files;
+      //   console.log(file)
+      //   /*readAsDataURL()读取文件，获取DataURL
+      //   *没有任何的返回值:void：但是读取完文件后，它会将读取的结果存储在文件读取对象的result中
+      //    需要传递一个参数 binary large object:文件(图片或者其它可以嵌入到文档的类型)*/
+        
+      //       var reader=new FileReader();
+      //       reader.readAsDataURL(file[0]);
+      //       reader.onload =function(){
+      //       /*展示*/
+      //       var img = document.createElement('img')
+      //       img.src = reader.result
+      //       body.appendChild(img)
+            
+      //   }
+      
+        //  for(var i=0;i<file.length;i++){
+        // reader.readAsDataURL(file[i]);
+        /*获取数据*/
+        /*FileReader提供一个完整的事件模型，用来捕获读取文件时的状态
+        * onabort:读取文件中断片时触发
+        * onerror:读取错误时触发
+        * onload:文件读取成功完成时触发
+        * onloadend:读取完成时触发，无论成功还是失败
+        * onloadstart:开始读取时触发
+        * onprogress:读取文件过程中持续触发*/
+        // reader.onload =function(){
+        //     /*展示*/
+        //     console.log(reader.result)
+        //     var img = document.createElement('img')
+        //     img.src = reader.result
+        //     body.appendChild(img)
+            
+        // }
+    // }
+    // }
+      </script>
+</body>
+</html>

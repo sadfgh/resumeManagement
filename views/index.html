@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历管理系统</title>
+   
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+   
+   
+</head>
+
+<body> 
+   
+  
+  
+
+
+
+      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">  
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">个人简历管理系统</a>
+        <ul class="nav nav-pills">
+        
+         
+         <li class="nav-item text-nowrap ">
+           
+            <span style="color: white;" class="nav-link">欢迎您！xxx</span>
+          </li>
+         <li class="nav-item text-nowrap">
+          
+            <span style="color: white;" class="nav-link">时间：xxxxxxxxx</span>
+          </li>
+          <li class="nav-item text-nowrap">
+           
+            <a style="color: white;" class="nav-link" href="#">简历演示</a>
+          </li>
+          <li class="nav-item text-nowrap">
+           
+            <a class="nav-link" href="#">退出系统</a>
+          </li>
+        </ul>
+      </nav> 
+      
+      <!-- col-md-2 d-none d-md-block bg-light sidebar -->
+      <div class="container-fluid">
+          <!-- <nav class="navbar navbar-inverse fixed-top ">  
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+            </div>
+                <div id="menu" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">欢迎您！xxx</a></li>
+                        <li><a href="#">时间：xxxxxxxxx</a></li>
+                        <li><a href="#">简历演示</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="#">退出系统</a></li>
+                        
+                    </ul>
+                </div>
+            
+        </nav>  -->
+         <!-- style="position: fixed;"  -->
+       <div style="width: 100%;height: 40px;"></div>
+       <div class="row">
+          <nav style="position: fixed;" class="col-md-2 d-none d-md-block bg-light sidebar"> 
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="javascript:var str=window.location.search;window.location.href='/index'+str">
+                    <span data-feather="home"></span>
+                    首页
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/personal'+str">
+                    <span data-feather="file"></span>
+                    个人信息
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/work'+str">
+                    <span data-feather="shopping-cart"></span>
+                    工作经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/project'+str">
+                    <span data-feather="users"></span>
+                    项目经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/assessment'+str">
+                    <span data-feather="bar-chart-2"></span>
+                    自我评价
+                  </a>
+                </li>
+             </ul>
+            </div> 
+          </nav> 
+          <!-- col-md-10 ml-sm-auto col-lg-10 px-4 -->
+         <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4"> 
+              <h1>个人简历</h1>
+            <table class="table">
+               <thead>
+                  <tr style="background-color:gainsboro;">
+                     <th>个人信息</th>
+                     <th></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="row" style="margin-right: 0px;
+                  margin-left: 0px;">
+                     <td class="col-md-6"><strong>姓名：</strong>{{personal.name}}</td>
+                     <td class="col-md-6"><strong>邮箱：</strong>{{personal.email}}</td>
+                  </tr>
+                  <tr class="row" style="margin-right: 0px;
+                  margin-left: 0px;">
+                  {{if personal.sex == 0}}
+                     <td class="col-md-6"><strong>性别：</strong>男</td>
+                  {{else}}
+                     <td class="col-md-6"><strong>性别：</strong>女</td>
+                  {{/if}}
+                     <td class="col-md-6"><strong>年龄：</strong>{{personal.age}}</td>
+                  </tr>
+                  <tr class="row" style="margin-right: 0px;
+                  margin-left: 0px;">
+                    <td class="col-md-6"><strong>学历：</strong>{{personal.education}}</td>
+                    <td class="col-md-6"><strong>毕业院校：</strong>{{personal.graduate}}</td>
+                 </tr>
+                 <tr class="row" style="margin-right: 0px;
+                 margin-left: 0px;">
+                    <td class="col-md-6"><strong>电话：</strong>{{personal.phone}}</td>
+                    <td class="col-md-6"><strong>应聘职位：</strong>{{personal.position}}</td>
+                 </tr>
+               </tbody>
+            </table>
+            <table class="table">
+                <thead>
+                   <tr style="width:100%;background-color:gainsboro;">
+                      <th>教育背景</th>
+                      <th></th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-6"><strong>毕业院校：</strong>{{background.graduate}}</td>
+                      <td class="col-md-6"><strong>专业：</strong>{{background.major}}</td>
+                   </tr>
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-12">
+                        <strong>主修课程：</strong>{{background.course}}
+                      </td>
+                   </tr>
+                </tbody>
+             </table>
+             <table class="table">
+                <thead>
+                   <tr style="width:100%;background-color:gainsboro;">
+                      <th>工作经验</th>
+                      <th></th>
+                   </tr>
+                </thead>
+                <tbody>
+                   {{each work}}
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-6"><strong>公司：</strong>{{$value.company}}</td>
+                      <td class="col-md-6"><strong>职位：</strong>{{$value.position}}</td>
+                   </tr>
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-12">
+                        <strong>工作内容：</strong>{{$value.content}}
+                      </td>
+                      <td class="col-md-12">
+                        <strong>收获：</strong>{{$value.harvest}}
+                    </td>
+                   </tr>
+                   {{/each}}
+                </tbody>
+             </table>
+             <table class="table">
+                <thead>
+                   <tr style="width:100%;background-color:gainsboro;">
+                      <th>项目经验</th>
+                      <th></th>
+                   </tr>
+                </thead>
+                <tbody>
+                   {{each project}}
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-12"><strong>项目名称：</strong>{{$value.name}}</td>
+                     
+                   </tr>
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-12">
+                         <strong>主要技术：</strong>{{$value.technology}}
+                      </td>
+                      <td class="col-md-12">
+                        <strong>项目描述：</strong>{{$value.describe}}
+                    </td>
+                    <td class="col-md-12">
+                     <strong>项目总结：</strong>{{$value.summarize}}
+               </td>
+                   </tr>
+                  {{/each}}
+                </tbody>
+             </table>
+             <table class="table">
+                <thead>
+                   <tr style="width:100%;background-color:gainsboro;">
+                      <th>自我评价</th>
+                      <th></th>
+                   </tr>
+                </thead>
+                <tbody>
+                
+                   <tr class="row" style="margin-right: 0px;
+                   margin-left: 0px;">
+                      <td class="col-md-12">
+                         {{assessment}}
+                      </td>
+            
+                   </tr>
+                </tbody>
+             </table>
+          </main> 
+      </div>
+      </div>
+
+
+
+   
+</body> 
+</html>

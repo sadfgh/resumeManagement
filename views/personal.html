@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历管理系统</title>
+    
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">个人简历管理系统</a>
+        
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">退出系统</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="container-fluid">
+       <div style="width: 100%;height: 40px;"></div>
+        <div class="row">
+          <nav style="position: fixed;" class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="javascript:var str=window.location.search;window.location.href='/index'+str">
+                    <span data-feather="home"></span>
+                    首页
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/personal'+str">
+                    <span data-feather="file"></span>
+                    个人信息
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/work'+str">
+                    <span data-feather="shopping-cart"></span>
+                    工作经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/project'+str">
+                    <span data-feather="users"></span>
+                    项目经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/assessment'+str">
+                    <span data-feather="bar-chart-2"></span>
+                    自我评价
+                  </a>
+                </li>
+             </ul>
+            </div>
+          </nav>
+      
+          <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+              <h1>个人信息</h1>
+              
+            <form role="form" action="/personalnew" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                  <input type="text" id="id" style="display: none;"  name="id">
+                <div class="form-group col-md-6">
+                 <label for="name">姓名：</label>
+                 <input type="text" class="form-control" id="name" name="name" value="{{personal.name}}" placeholder="请输入名称">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">邮箱：</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{personal.email}}" placeholder="请输入邮箱">
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                     <label for="sex">性别：</label><br>
+                     {{if personal.sex == 0}}
+                     <label class="radio-inline">
+                        <input type="radio" name="sex" id="optionsRadios3" checked  value="0">男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="optionsRadios4" value="1">女
+                  </label>
+                    {{else}}
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="optionsRadios3"   value="0">男
+                  </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="sex" id="optionsRadios4" checked value="1">女
+                    </label>
+                    {{/if}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="age">年龄：</label>
+                        <input type="number" class="form-control" id="age" name="age" value="{{personal.age}}" placeholder="请输入年龄">
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                         <label for="education">学历：</label>
+                         <input type="text" class="form-control" id="education" name="education" value="{{personal.education}}" placeholder="请输入学历">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="graduate">毕业院校：</label>
+                            <input type="text" class="form-control" id="graduate" name="graduate" value="{{personal.graduate}}" placeholder="请输入毕业院校">
+                           </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                             <label for="phone">电话：</label>
+                             <input type="tel" class="form-control" id="phone" name="phone" value="{{personal.phone}}" placeholder="请输入电话号码">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="position">应聘职位：</label>
+                                <input type="text" class="form-control" id="position" name="position" value="{{personal.position}}" placeholder="请输入应聘职位">
+                               </div>
+                            </div>
+               
+                  <h5>生活照片<span id="number">1</span>/9</h5>
+                   
+                      <div class="row">
+                        {{each personal.src}}
+                        <div style="height: 250px;line-height:250px;text-align: center;" class=" col-md-4">
+                          {{if $value != null}}
+                          <img style="width: 10%;height: 10%;border-radius: 50%;position: absolute;right: 10px;top: 10px;border: 1px solid rgba(255, 0,0, .5);padding: 1%;" src="public/img/guanbi.png" alt="">
+                        <img style="width: 80% ;" src="{{$value}}">
+                        {{else}}
+                       
+                        <img style="width: 80% ;" src="public/img/jiahao.png">
+                      
+                        {{/if}}
+                        </div>
+                     {{/each}}
+                  
+                       
+                      </div>
+               
+                <div class="form-group"> 
+                <label for="inputfile">添加图片</label>
+                <input type="file" id="inputfile">
+                </div>
+                <button type="button" class="btn btn-danger">重置</button>
+              <button type="submit" class="btn btn-success">保存</button>
+            </form>
+    
+          </main>
+        </div>
+      </div>
+      <script>
+        var str = window.location.search
+        var strnew  = str.substr(str.length-1,1)
+        $("#id").val(strnew)
+
+        //图片处理
+     addimg()
+     delimg()
+        var number = document.querySelector('#number')
+        
+        var num = document.querySelectorAll("img[src='public/img/jiahao.png']").length
+        console.log(num)
+        number.innerHTML = parseInt(9 - num)
+        //添加处理
+        function addimg(){
+        var imgarr = document.querySelectorAll("img[src='public/img/jiahao.png']")
+        console.log(imgarr)
+        for(var i=0;i<imgarr.length;i++){
+          imgarr[i].onclick = function(){
+            var newFileInput = "<input style='opacity: 1;float: left;width:1px;height:1px;'  id='upload'  type='file' name='files'>"
+            var div = this.parentElement
+        
+            div.innerHTML = newFileInput
+            
+            var files = document.querySelector("#upload")
+            console.log(files)
+
+             files.click()
+             if(files.value == ''){
+              var img = document.createElement('img')
+              img.src = 'public/img/jiahao.png'
+              img.style.width = '80%'
+              img.id = 'dimg'
+              div.appendChild(img)
+             
+              addimg()
+             }
+              files.onchange =function(){
+              
+            
+                var file= this.files;
+            console.log(file)
+            this.removeAttribute('id')
+            var reader=new FileReader();
+            reader.readAsDataURL(file[0]);
+            reader.onload =function(){
+            /*展示*/
+            var  img = document.querySelector('#dimg')
+             div.removeChild(img)
+            var img1 = document.createElement('img')
+            img1.src ="public/img/guanbi.png" 
+            img1.style.cssText = 'width: 10%;height: 10%;border-radius: 50%;position: absolute;right: 10px;top: 10px;border: 1px solid rgba(255, 0,0, .5);padding: 1%;'
+            div.appendChild(img1)
+            var img2 = document.createElement('img')
+            img2.style.width = '80%'
+            img2.src = reader.result
+            div.appendChild(img2)
+            num--
+            console.log(num)
+            number.innerHTML = parseInt(9 - num)
+              delimg()
+              }
+           
+           
+            }   
+        }
+      }
+    }
+       //删除处理
+       function delimg(){
+       var imgdelet = document.querySelectorAll("img[src='public/img/guanbi.png']")
+          console.log(imgdelet)
+          for(var i=0;i<imgdelet.length;i++){
+            imgdelet[i].onclick = function(){
+            var newimg = "<img style='width: 80% ;' src='public/img/jiahao.png'>"
+            var div = this.parentElement
+            div.innerHTML = newimg
+            num++
+            console.log(num)
+            number.innerHTML = parseInt(9 - num)
+            addimg()
+          }
+        }
+        
+      }
+      </script>
+</body>
+</html>

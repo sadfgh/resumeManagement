@@ -1,0 +1,154 @@
+.section1{
+    background-color: snow;
+}
+.box1{
+    position: absolute;
+    right: 10%;
+    top: 20%;
+    width: 250px;
+    height: 30px;
+    background-color: pink;
+}
+.box2{
+    position: absolute;
+    left:10%;
+    bottom:10%;
+    width: 100px;
+    height: 70px;
+    background-color: pink;
+}
+.box3{
+    position: absolute;
+    left: 30%;
+    bottom: 25%;
+    width: 100px;
+    height: 120px;
+    background-color: pink;
+}
+.box4{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: 120px;
+    height: 80px;
+    background-color: pink;
+}
+.box5{
+    position: absolute;
+    right: 30%;
+    bottom: 40%;
+    width: 60px;
+    height: 30px;
+    background-color: pink;
+}
+.box6{
+    position: absolute;
+    right: 10%;
+    bottom: 20%;
+    width: 160px;
+    height: 150px;
+    background-color: pink;
+}
+
+/* 动画组 */
+.updown{
+    animation: fly 2s linear infinite;
+}
+
+@keyframes fly{
+    0%{
+        top:20%;
+    }
+    50%{
+        top:25%;
+    }
+    100%{
+        top:20%;
+    }
+}
+.section2{
+    background-color:steelblue;
+}
+.box21{
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, .9);
+}
+.box22{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 35px;
+    background-color: skyblue;
+    display: none;
+}
+.box23{
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 20px;
+    background-color: red;
+    opacity: 0;
+}
+.box24{
+    position: absolute;
+    bottom: 50px;
+    right: 200px;
+    width: 80px;
+    height: 50px;
+    background-color: blue;
+    display: none;
+}
+
+
+
+
+
+
+
+.section3{
+    background-color: aquamarine;
+}
+.section4{
+    background-color: yellowgreen;
+}
+.section5{
+    background-color: wheat;
+}
+.section6{
+    background-color: teal;
+}
+.nav{
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    background-color: red;
+    z-index: 999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人简历管理系统</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">个人简历管理系统</a>
+        
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">退出系统</a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="container-fluid">
+       <div style="width: 100%;height: 40px;"></div>
+        <div class="row">
+          <nav style="position: fixed;" class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="javascript:var str=window.location.search;window.location.href='/index'+str">
+                    <span data-feather="home"></span>
+                    首页
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/personal'+str">
+                    <span data-feather="file"></span>
+                    个人信息
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/work'+str">
+                    <span data-feather="shopping-cart"></span>
+                    工作经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/project'+str">
+                    <span data-feather="users"></span>
+                    项目经历
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:var str=window.location.search;window.location.href='/assessment'+str">
+                    <span data-feather="bar-chart-2"></span>
+                    自我评价
+                  </a>
+                </li>
+             </ul>
+            </div>
+          </nav>
+      
+          <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+              <h1>工作经历</h1>
+              
+            <form role="form" action="/worknew" method="POST">
+              <input type="text" id="id" style="display: none;"  name="id">
+              {{each work}}
+                <div class="row">
+                <div class="form-group col-md-6">
+                 <label for="company">公司名称：</label>
+                 <input type="text" class="form-control" id="company" name="company" value="{{$value.company}}" placeholder="请输入公司名称">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="position">职位：</label>
+                    <input type="text" class="form-control" id="position" name="position" value="{{$value.position}}" placeholder="请输入职位">
+                   </div>
+                 <div class="form-group col-md-12">
+                    <label for="content">工作内容：</label>
+                    <textarea class="form-control" rows="3" id="content" name="content">{{$value.content}}</textarea>
+                   </div>
+                   <div class="form-group col-md-12">
+                    <label for="harvest">收获：</label>
+                    <textarea class="form-control" rows="3" id="harvest" name="harvest">{{$value.harvest}}</textarea>
+                   </div>
+                </div>
+                {{/each}}
+                <button type="submit" class="btn btn-block btn-default">继续添加工作经验</button>
+                <button type="submit" class="btn btn-danger">重置</button>
+              <button type="submit" class="btn btn-success">保存</button>
+            </form>
+    
+          </main>
+        </div>
+      </div>
+      <script>
+        var str = window.location.search
+        var strnew  = str.substr(str.length-1,1)
+        $("#id").val(strnew)
+      </script>
+</body>
+</html>
